@@ -22,11 +22,17 @@ Partial Class frmService
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.lvListnextToserve = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.lblTime = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.lblTableServe = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
         Me.Panel1.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lvListnextToserve
@@ -38,7 +44,6 @@ Partial Class frmService
         Me.lvListnextToserve.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvListnextToserve.ForeColor = System.Drawing.Color.White
         Me.lvListnextToserve.FullRowSelect = True
-        Me.lvListnextToserve.GridLines = True
         Me.lvListnextToserve.Location = New System.Drawing.Point(732, 0)
         Me.lvListnextToserve.Name = "lvListnextToserve"
         Me.lvListnextToserve.Size = New System.Drawing.Size(532, 538)
@@ -54,12 +59,43 @@ Partial Class frmService
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.DodgerBlue
+        Me.Panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel1.Controls.Add(Me.StatusStrip1)
+        Me.Panel1.Controls.Add(Me.lblTableServe)
         Me.Panel1.Controls.Add(Me.Label1)
         Me.Panel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1264, 538)
         Me.Panel1.TabIndex = 2
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.AutoSize = False
+        Me.StatusStrip1.BackColor = System.Drawing.SystemColors.MenuHighlight
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblTime})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 486)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(1262, 50)
+        Me.StatusStrip1.TabIndex = 2
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'lblTime
+        '
+        Me.lblTime.Font = New System.Drawing.Font("Tahoma", 24.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTime.Name = "lblTime"
+        Me.lblTime.Size = New System.Drawing.Size(87, 45)
+        Me.lblTime.Text = "Time"
+        '
+        'lblTableServe
+        '
+        Me.lblTableServe.AutoSize = True
+        Me.lblTableServe.Font = New System.Drawing.Font("Tahoma", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblTableServe.Location = New System.Drawing.Point(213, 240)
+        Me.lblTableServe.Name = "lblTableServe"
+        Me.lblTableServe.Size = New System.Drawing.Size(423, 116)
+        Me.lblTableServe.TabIndex = 1
+        Me.lblTableServe.Text = "TABLE #"
         '
         'Label1
         '
@@ -71,6 +107,9 @@ Partial Class frmService
         Me.Label1.TabIndex = 0
         Me.Label1.Text = "NOW SERVING"
         '
+        'Timer1
+        '
+        '
         'frmService
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -79,12 +118,15 @@ Partial Class frmService
         Me.ClientSize = New System.Drawing.Size(1264, 538)
         Me.Controls.Add(Me.lvListnextToserve)
         Me.Controls.Add(Me.Panel1)
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None
         Me.MaximizeBox = False
         Me.Name = "frmService"
         Me.Text = "Customer Service"
         Me.WindowState = System.Windows.Forms.FormWindowState.Maximized
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -92,5 +134,9 @@ Partial Class frmService
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents Panel1 As System.Windows.Forms.Panel
     Friend WithEvents Label1 As System.Windows.Forms.Label
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents lblTableServe As System.Windows.Forms.Label
+    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+    Friend WithEvents lblTime As System.Windows.Forms.ToolStripStatusLabel
 
 End Class

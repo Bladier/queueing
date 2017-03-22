@@ -14,7 +14,7 @@
     End Property
 
     Private _TABLENAME As String
-    Public Property _ABLENAME() As String
+    Public Property TABLENAME() As String
         Get
             Return _TABLENAME
         End Get
@@ -25,8 +25,19 @@
 #End Region
 
 #Region "fUNCTIONS AND PROCEDURES"
-    Friend Sub load_tables()
-        mysql = "SELECT * FROM TBL"
+
+    Friend Sub load_tables(ByVal table As String)
+        mysql = "SELECT * FROM " & filldata & " WHERE TABLENAME = '" & table & "'"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        load_byrow(ds.Tables(0).Rows(0))
+    End Sub
+
+    Friend Sub load_byrow(ByVal dr As DataRow)
+        With dr
+            _ID = .Item("ID")
+            _TABLENAME = .Item("TABLENAME")
+        End With
     End Sub
 #End Region
 End Class
