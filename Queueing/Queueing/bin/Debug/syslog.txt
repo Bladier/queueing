@@ -1,0 +1,13 @@
+[03/22/2017 11:44:17] ERROR [08004] [ODBC Firebird Driver]File Database is not found
+[03/22/2017 11:44:17] User: SYSDBA
+[03/22/2017 11:44:17] Database: QUEUEING.FDB
+[03/22/2017 11:44:17] LoadSQL - System.InvalidOperationException: The ConnectionString property has not been initialized.
+   at System.Data.Odbc.OdbcConnection.PermissionDemand()
+   at System.Data.Odbc.OdbcConnectionFactory.PermissionDemand(DbConnection outerConnection)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionInternal.OpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory)
+   at System.Data.Odbc.OdbcConnection.Open()
+   at System.Data.Common.DbDataAdapter.FillInternal(DataSet dataset, DataTable[] datatables, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, Int32 startRecord, Int32 maxRecords, String srcTable, IDbCommand command, CommandBehavior behavior)
+   at System.Data.Common.DbDataAdapter.Fill(DataSet dataSet, String srcTable)
+   at Queueing.database.LoadSQL(String mySql, String tblName) in C:\Users\MISGWAPOHON\Documents\queueing\Queueing\Queueing\Module\database.vb:line 164
