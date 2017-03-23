@@ -19,12 +19,12 @@
         If cboTable.Text = "" Then Exit Sub
 
         If Not LOG.check_TABLE_IF_ALREADY_FILLIN(cboTable.Text) Then
-            MsgBox("This table is already fill in.", MsgBoxStyle.Critical, "InValid") : Exit Sub
+            Exit Sub
         End If
 
 
         If Not LOG.check_TABLE_IF_PENDING(cboTable.Text) Then
-            MsgBox("This table is already fill in.", MsgBoxStyle.Critical, "InValid") : Exit Sub
+            Exit Sub
         End If
 
 
@@ -51,7 +51,9 @@
         mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "' ORDER BY LOGID ASC"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
+
         If ds.Tables(0).Rows.Count > 0 Then
+            lv_Tables.Items.Clear()
             For Each dr As DataRow In ds.Tables(0).Rows
                 With dr
                     If .Item("STATUS") = "SERVING" Then
@@ -61,11 +63,11 @@
                     Else
                         Dim lv As ListViewItem = lv_Tables.Items.Add(.Item("LOGID"))
                         lv.SubItems.Add(.Item("TABLE_NAME"))
+                        lv.SubItems.Add(.Item("STATUS"))
                     End If
                 End With
             Next
         End If
-
     End Sub
 
 
@@ -80,7 +82,19 @@
 
     Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
         If Not LOG.check_PENDING_TABLES Then
+            frmService.lblTableServe.Text = "TABLE #"
             Exit Sub
+        End If
+
+        If lv_Tables.Items.Count = 0 Then
+            Dim mysql As String = "SELECT * FROM TBL_LOG_SERVE WHERE DATE_ADDED = '" & Now.ToShortDateString & "'" & _
+                                    "AND STATUS <> 'SERVED'"
+            Dim ds As DataSet = LoadSQL(mysql, filldata)
+            With LOG
+                .TABLEID = ds.Tables(0).Rows(0).Item("TABLEID")
+                .STATUS = "SERVED"
+                .UPDATE_LOG("SERVING")
+            End With : Exit Sub
         End If
 
         For Each itm As ListViewItem In lv_Tables.Items
@@ -91,7 +105,7 @@
                 With LOG
                     .TABLEID = tbl.ID
                     .STATUS = "SERVING"
-                    .UPDATE_LOG("SERVING")
+                    .UPDATE_LOG("PENDING")
                 End With
 
                 With LOG
@@ -116,8 +130,10 @@
         Select Case keyData
             Case Keys.Enter
                 btnAdd.PerformClick()
-            Case Keys.F5
+            Case Keys.F6
                 btnNext.PerformClick()
+            Case Keys.F7
+                cboTable.Focus()
             Case Else
                 'Do Nothing
         End Select

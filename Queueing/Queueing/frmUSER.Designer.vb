@@ -36,6 +36,7 @@ Partial Class frmUSER
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
@@ -147,11 +148,11 @@ Partial Class frmUSER
         '
         'lv_Tables
         '
-        Me.lv_Tables.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
+        Me.lv_Tables.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
         Me.lv_Tables.Font = New System.Drawing.Font("Tahoma", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lv_Tables.Location = New System.Drawing.Point(466, 80)
         Me.lv_Tables.Name = "lv_Tables"
-        Me.lv_Tables.Size = New System.Drawing.Size(284, 312)
+        Me.lv_Tables.Size = New System.Drawing.Size(374, 312)
         Me.lv_Tables.TabIndex = 7
         Me.lv_Tables.UseCompatibleStateImageBehavior = False
         Me.lv_Tables.View = System.Windows.Forms.View.Details
@@ -164,7 +165,7 @@ Partial Class frmUSER
         'ColumnHeader2
         '
         Me.ColumnHeader2.Text = "NEXT TO SERVE"
-        Me.ColumnHeader2.Width = 275
+        Me.ColumnHeader2.Width = 238
         '
         'GroupBox2
         '
@@ -177,12 +178,17 @@ Partial Class frmUSER
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
         '
+        'ColumnHeader3
+        '
+        Me.ColumnHeader3.Text = "STATUS"
+        Me.ColumnHeader3.Width = 132
+        '
         'frmUSER
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.IndianRed
-        Me.ClientSize = New System.Drawing.Size(762, 404)
+        Me.ClientSize = New System.Drawing.Size(852, 404)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lv_Tables)
         Me.Controls.Add(Me.GroupBox1)
@@ -212,4 +218,5 @@ Partial Class frmUSER
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
+    Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
 End Class

@@ -146,7 +146,7 @@
 
     Friend Function check_PENDING_TABLES() As Boolean
         mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "'" & _
-                "AND STATUS = 'PENDING'"
+                "AND STATUS = 'PENDING' OR STATUS = 'SERVING'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count = 0 Then
@@ -157,7 +157,7 @@
 
     Friend Function Get_last_SErving() As String
         mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "'" & _
-                "AND STATUS = 'SERVING'"
+                "AND STATUS = 'SERVING' ORDER BY TIME_SERVED ASC ROWS 1"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count = 0 Then
