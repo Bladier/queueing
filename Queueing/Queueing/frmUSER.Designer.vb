@@ -35,7 +35,9 @@ Partial Class frmUSER
         Me.lv_Tables = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2.SuspendLayout()
         Me.SuspendLayout()
         '
         'cboTable
@@ -45,14 +47,14 @@ Partial Class frmUSER
         Me.cboTable.FormattingEnabled = True
         Me.cboTable.Location = New System.Drawing.Point(12, 71)
         Me.cboTable.Name = "cboTable"
-        Me.cboTable.Size = New System.Drawing.Size(257, 33)
+        Me.cboTable.Size = New System.Drawing.Size(279, 33)
         Me.cboTable.TabIndex = 0
         '
         'btnAdd
         '
         Me.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnAdd.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(275, 69)
+        Me.btnAdd.Location = New System.Drawing.Point(297, 71)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(137, 35)
         Me.btnAdd.TabIndex = 1
@@ -73,9 +75,9 @@ Partial Class frmUSER
         '
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(32, 212)
+        Me.btnCancel.Location = New System.Drawing.Point(11, 93)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(173, 47)
+        Me.btnCancel.Size = New System.Drawing.Size(175, 64)
         Me.btnCancel.TabIndex = 4
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
@@ -84,9 +86,9 @@ Partial Class frmUSER
         '
         Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnPrevious.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrevious.Location = New System.Drawing.Point(32, 150)
+        Me.btnPrevious.Location = New System.Drawing.Point(11, 12)
         Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(173, 47)
+        Me.btnPrevious.Size = New System.Drawing.Size(175, 76)
         Me.btnPrevious.TabIndex = 2
         Me.btnPrevious.Text = "Previous"
         Me.btnPrevious.UseVisualStyleBackColor = True
@@ -95,9 +97,9 @@ Partial Class frmUSER
         '
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnNext.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNext.Location = New System.Drawing.Point(211, 150)
+        Me.btnNext.Location = New System.Drawing.Point(190, 12)
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(165, 47)
+        Me.btnNext.Size = New System.Drawing.Size(167, 76)
         Me.btnNext.TabIndex = 3
         Me.btnNext.Text = "Next"
         Me.btnNext.UseVisualStyleBackColor = True
@@ -164,17 +166,26 @@ Partial Class frmUSER
         Me.ColumnHeader2.Text = "NEXT TO SERVE"
         Me.ColumnHeader2.Width = 275
         '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.btnPrevious)
+        Me.GroupBox2.Controls.Add(Me.btnNext)
+        Me.GroupBox2.Controls.Add(Me.btnCancel)
+        Me.GroupBox2.Location = New System.Drawing.Point(47, 110)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(366, 164)
+        Me.GroupBox2.TabIndex = 10
+        Me.GroupBox2.TabStop = False
+        '
         'frmUSER
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.IndianRed
         Me.ClientSize = New System.Drawing.Size(762, 404)
+        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lv_Tables)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.btnCancel)
-        Me.Controls.Add(Me.btnPrevious)
-        Me.Controls.Add(Me.btnNext)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.cboTable)
@@ -182,6 +193,7 @@ Partial Class frmUSER
         Me.Text = "QUEUEING SYSTEM"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        Me.GroupBox2.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -199,4 +211,5 @@ Partial Class frmUSER
     Friend WithEvents lv_Tables As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
 End Class

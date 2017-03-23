@@ -87,7 +87,7 @@
             .Item("USERID") = 1
             .Item("TABLE_NAME") = _TABLENAME
             .Item("STATUS") = _STATUS
-            .Item("TIME_ADDED") = Now
+            .Item("DATE_ADDED") = Now
         End With
         ds.Tables(0).Rows.Add(dsnewrow)
         database.SaveEntry(ds)
@@ -107,7 +107,7 @@
 #End Region
 
     Friend Function check_queues() As Boolean
-        mysql = "SELECT * FROM " & filldata & " WHERE TIME_ADDED = '" & Now.ToShortDateString & "'"
+        mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count > 0 Then
@@ -124,7 +124,18 @@
 
     Friend Function check_TABLE_IF_ALREADY_FILLIN(ByVal STR As String) As Boolean
         mysql = "SELECT * FROM " & filldata & " WHERE TABLE_NAME = '" & STR & "' " & _
-                "AND STATUS = 'PENDING' OR STATUS ='SERVING'"
+                "AND STATUS = 'SERVING'"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            Return False
+        End If
+        Return True
+    End Function
+
+    Friend Function check_TABLE_IF_PENDING(ByVal STR As String) As Boolean
+        mysql = "SELECT * FROM " & filldata & " WHERE TABLE_NAME = '" & STR & "' " & _
+                "AND STATUS = 'PENDING'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count > 0 Then
@@ -134,7 +145,7 @@
     End Function
 
     Friend Function check_PENDING_TABLES() As Boolean
-        mysql = "SELECT * FROM " & filldata & " WHERE TIME_ADDED = '" & Now.ToShortDateString & "'" & _
+        mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "'" & _
                 "AND STATUS = 'PENDING'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
@@ -145,7 +156,7 @@
     End Function
 
     Friend Function Get_last_SErving() As String
-        mysql = "SELECT * FROM " & filldata & " WHERE TIME_ADDED = '" & Now.ToShortDateString & "'" & _
+        mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "'" & _
                 "AND STATUS = 'SERVING'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 

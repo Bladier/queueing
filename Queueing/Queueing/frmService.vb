@@ -12,7 +12,7 @@
 
 
     Friend Sub lOAD_QUEUES()
-        mysql = "SELECT * FROM " & filldata & " WHERE TIME_ADDED = '" & Now.ToShortDateString & "' ORDER BY LOGID ASC"
+        mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "' ORDER BY LOGID ASC"
 
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
@@ -22,6 +22,7 @@
         For Each dr As DataRow In ds.Tables(0).Rows
             With dr
                 If .Item("STATUS") = "SERVING" Then
+                    lblTableServe.Text = .Item("TABLE_NAME")
                     On Error Resume Next
                 ElseIf .Item("STATUS") = "SERVED" Then
                     On Error Resume Next
@@ -30,6 +31,8 @@
                 End If
             End With
         Next
+
+
     End Sub
 
     Private Sub frmService_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

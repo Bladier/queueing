@@ -22,6 +22,12 @@
             MsgBox("This table is already fill in.", MsgBoxStyle.Critical, "InValid") : Exit Sub
         End If
 
+
+        If Not LOG.check_TABLE_IF_PENDING(cboTable.Text) Then
+            MsgBox("This table is already fill in.", MsgBoxStyle.Critical, "InValid") : Exit Sub
+        End If
+
+
         tbl.load_tables(cboTable.Text)
 
         With LOG
@@ -37,12 +43,12 @@
         End With
 
         frmService.lOAD_QUEUES()
-      
+        load_pending()
     End Sub
 
 
     Private Sub load_pending()
-        mysql = "SELECT * FROM " & filldata & " WHERE TIME_ADDED = '" & Now.ToShortDateString & "' ORDER BY LOGID ASC"
+        mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED = '" & Now.ToShortDateString & "' ORDER BY LOGID ASC"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count > 0 Then
@@ -81,22 +87,24 @@
             If itm.SubItems(1).Text <> "" Then
                 val = itm.SubItems(1).Text
 
-                With LOG
-                    .TABLEID = .Get_last_SErving
-                    .STATUS = "SERVED"
-                    .UPDATE_LOG("SERVING")
-                End With
-
-
                 tbl.load_tables(val)
                 With LOG
                     .TABLEID = tbl.ID
                     .STATUS = "SERVING"
                     .UPDATE_LOG("SERVING")
                 End With
+
+                With LOG
+                    .TABLEID = .Get_last_SErving
+                    .STATUS = "SERVED"
+                    .UPDATE_LOG("SERVING")
+                End With
                 Exit For
             End If
         Next
+
+        frmService.lOAD_QUEUES()
+        load_pending()
     End Sub
 
 
