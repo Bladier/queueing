@@ -26,8 +26,11 @@
                     On Error Resume Next
                 ElseIf .Item("STATUS") = "SERVED" Then
                     On Error Resume Next
+                ElseIf .Item("STATUS") = "CANCEL" Then
+                    On Error Resume Next
                 Else
-                    lvListnextToserve.Items.Add(.Item("TABLE_NAME"))
+                    Dim lv As ListViewItem = lvListnextToserve.Items.Add(0)
+                    lv.SubItems.Add(.Item("TABLE_NAME"))
                 End If
             End With
         Next

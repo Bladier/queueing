@@ -60,10 +60,13 @@
                         On Error Resume Next
                     ElseIf .Item("STATUS") = "SERVED" Then
                         On Error Resume Next
+                    ElseIf .Item("STATUS") = "CANCEL" Then
+                        On Error Resume Next
                     Else
                         Dim lv As ListViewItem = lv_Tables.Items.Add(.Item("LOGID"))
                         lv.SubItems.Add(.Item("TABLE_NAME"))
                         lv.SubItems.Add(.Item("STATUS"))
+                        lv.SubItems.Add(.Item("LOGID"))
                     End If
                 End With
             Next
@@ -87,14 +90,25 @@
         End If
 
         If lv_Tables.Items.Count = 0 Then
-            Dim mysql As String = "SELECT * FROM TBL_LOG_SERVE WHERE DATE_ADDED = '" & Now.ToShortDateString & "'" & _
-                                    "AND STATUS <> 'SERVED'"
+            Dim mysql As String = "SELECT * FROM TBL_LOG_SERVE WHERE DATE_ADDED = '" & Now.ToShortDateString & "'"
             Dim ds As DataSet = LoadSQL(mysql, filldata)
-            With LOG
-                .TABLEID = ds.Tables(0).Rows(0).Item("TABLEID")
-                .STATUS = "SERVED"
-                .UPDATE_LOG("SERVING")
-            End With : Exit Sub
+
+            For Each dr As DataRow In ds.Tables(0).Rows
+                With dr
+                    If .Item("STATUS") = "SERVED" Then
+                        On Error Resume Next
+                    ElseIf .Item("STATUS") = "CANCEL" Then
+                        On Error Resume Next
+                    Else
+                        With LOG
+                            .TABLEID = ds.Tables(0).Rows(0).Item("TABLEID")
+                            .STATUS = "SERVED"
+                            .UPDATE_LOG("SERVING")
+                        End With : Exit Sub
+                    End If
+
+                End With
+            Next
         End If
 
         For Each itm As ListViewItem In lv_Tables.Items
@@ -130,14 +144,27 @@
         Select Case keyData
             Case Keys.Enter
                 btnAdd.PerformClick()
-            Case Keys.F6
+            Case Keys.F5
                 btnNext.PerformClick()
             Case Keys.F7
                 cboTable.Focus()
+            Case Keys.F9
+                btnCancel.PerformClick()
             Case Else
                 'Do Nothing
         End Select
 
         Return MyBase.ProcessCmdKey(msg, keyData)
     End Function
+
+  
+    Private Sub btnCancel_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        If lv_Tables.SelectedItems.Count = 0 Then Exit Sub
+        With LOG
+            .CANCEL(lv_Tables.SelectedItems(0).SubItems(3).Text)
+        End With
+
+        lv_Tables.SelectedItems(0).Remove()
+        frmService.lOAD_QUEUES()
+    End Sub
 End Class

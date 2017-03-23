@@ -26,19 +26,18 @@ Partial Class frmUSER
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnCancel = New System.Windows.Forms.Button()
-        Me.btnPrevious = New System.Windows.Forms.Button()
         Me.btnNext = New System.Windows.Forms.Button()
-        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.Label3 = New System.Windows.Forms.Label()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.lv_Tables = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.GroupBox1.SuspendLayout()
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox2.SuspendLayout()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'cboTable
@@ -48,14 +47,14 @@ Partial Class frmUSER
         Me.cboTable.FormattingEnabled = True
         Me.cboTable.Location = New System.Drawing.Point(12, 71)
         Me.cboTable.Name = "cboTable"
-        Me.cboTable.Size = New System.Drawing.Size(279, 33)
+        Me.cboTable.Size = New System.Drawing.Size(235, 33)
         Me.cboTable.TabIndex = 0
         '
         'btnAdd
         '
         Me.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnAdd.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(297, 71)
+        Me.btnAdd.Location = New System.Drawing.Point(253, 71)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(137, 35)
         Me.btnAdd.TabIndex = 1
@@ -76,81 +75,30 @@ Partial Class frmUSER
         '
         Me.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnCancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnCancel.Location = New System.Drawing.Point(11, 93)
+        Me.btnCancel.Location = New System.Drawing.Point(11, 114)
         Me.btnCancel.Name = "btnCancel"
-        Me.btnCancel.Size = New System.Drawing.Size(175, 64)
+        Me.btnCancel.Size = New System.Drawing.Size(357, 91)
         Me.btnCancel.TabIndex = 4
         Me.btnCancel.Text = "Cancel"
         Me.btnCancel.UseVisualStyleBackColor = True
-        '
-        'btnPrevious
-        '
-        Me.btnPrevious.FlatStyle = System.Windows.Forms.FlatStyle.System
-        Me.btnPrevious.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnPrevious.Location = New System.Drawing.Point(11, 12)
-        Me.btnPrevious.Name = "btnPrevious"
-        Me.btnPrevious.Size = New System.Drawing.Size(175, 76)
-        Me.btnPrevious.TabIndex = 2
-        Me.btnPrevious.Text = "Previous"
-        Me.btnPrevious.UseVisualStyleBackColor = True
         '
         'btnNext
         '
         Me.btnNext.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnNext.Font = New System.Drawing.Font("Microsoft Sans Serif", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnNext.Location = New System.Drawing.Point(190, 12)
+        Me.btnNext.Location = New System.Drawing.Point(11, 12)
         Me.btnNext.Name = "btnNext"
-        Me.btnNext.Size = New System.Drawing.Size(167, 76)
+        Me.btnNext.Size = New System.Drawing.Size(357, 96)
         Me.btnNext.TabIndex = 3
         Me.btnNext.Text = "Next"
         Me.btnNext.UseVisualStyleBackColor = True
         '
-        'GroupBox1
-        '
-        Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.Label2)
-        Me.GroupBox1.Location = New System.Drawing.Point(10, 292)
-        Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(424, 100)
-        Me.GroupBox1.TabIndex = 6
-        Me.GroupBox1.TabStop = False
-        '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(224, 16)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(125, 23)
-        Me.Label4.TabIndex = 9
-        Me.Label4.Text = "• F7 To Serve"
-        '
-        'Label3
-        '
-        Me.Label3.AutoSize = True
-        Me.Label3.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(18, 52)
-        Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(125, 23)
-        Me.Label3.TabIndex = 8
-        Me.Label3.Text = "• F6 To Serve"
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(18, 16)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(189, 23)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "• Enter To Add Serve"
-        '
         'lv_Tables
         '
-        Me.lv_Tables.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3})
+        Me.lv_Tables.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lv_Tables.Font = New System.Drawing.Font("Tahoma", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lv_Tables.Location = New System.Drawing.Point(466, 80)
+        Me.lv_Tables.FullRowSelect = True
+        Me.lv_Tables.Location = New System.Drawing.Point(396, 71)
         Me.lv_Tables.Name = "lv_Tables"
         Me.lv_Tables.Size = New System.Drawing.Size(374, 312)
         Me.lv_Tables.TabIndex = 7
@@ -167,39 +115,67 @@ Partial Class frmUSER
         Me.ColumnHeader2.Text = "NEXT TO SERVE"
         Me.ColumnHeader2.Width = 238
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.btnPrevious)
-        Me.GroupBox2.Controls.Add(Me.btnNext)
-        Me.GroupBox2.Controls.Add(Me.btnCancel)
-        Me.GroupBox2.Location = New System.Drawing.Point(47, 110)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(366, 164)
-        Me.GroupBox2.TabIndex = 10
-        Me.GroupBox2.TabStop = False
-        '
         'ColumnHeader3
         '
         Me.ColumnHeader3.Text = "STATUS"
         Me.ColumnHeader3.Width = 132
+        '
+        'GroupBox2
+        '
+        Me.GroupBox2.Controls.Add(Me.btnNext)
+        Me.GroupBox2.Controls.Add(Me.btnCancel)
+        Me.GroupBox2.Location = New System.Drawing.Point(16, 110)
+        Me.GroupBox2.Name = "GroupBox2"
+        Me.GroupBox2.Size = New System.Drawing.Size(374, 211)
+        Me.GroupBox2.TabIndex = 10
+        Me.GroupBox2.TabStop = False
+        '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "LOG_ID"
+        Me.ColumnHeader4.Width = 0
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.AutoSize = False
+        Me.StatusStrip1.BackColor = System.Drawing.Color.Gainsboro
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 406)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.Size = New System.Drawing.Size(781, 30)
+        Me.StatusStrip1.TabIndex = 11
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripStatusLabel1
+        '
+        Me.ToolStripStatusLabel1.BackColor = System.Drawing.Color.LightGray
+        Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(589, 25)
+        Me.ToolStripStatusLabel1.Text = "Shortcut Keys: Enter To Add Serve |F7 To Select Table |F5 To Next |F9 To Cancel"
+        '
+        'ToolStripStatusLabel2
+        '
+        Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 45)
         '
         'frmUSER
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.IndianRed
-        Me.ClientSize = New System.Drawing.Size(852, 404)
+        Me.ClientSize = New System.Drawing.Size(781, 436)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.lv_Tables)
-        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.cboTable)
         Me.Name = "frmUSER"
         Me.Text = "QUEUEING SYSTEM"
-        Me.GroupBox1.ResumeLayout(False)
-        Me.GroupBox1.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -208,15 +184,14 @@ Partial Class frmUSER
     Friend WithEvents btnAdd As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
     Friend WithEvents btnCancel As System.Windows.Forms.Button
-    Friend WithEvents btnPrevious As System.Windows.Forms.Button
     Friend WithEvents btnNext As System.Windows.Forms.Button
-    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
-    Friend WithEvents Label4 As System.Windows.Forms.Label
-    Friend WithEvents Label3 As System.Windows.Forms.Label
-    Friend WithEvents Label2 As System.Windows.Forms.Label
     Friend WithEvents lv_Tables As System.Windows.Forms.ListView
     Friend WithEvents ColumnHeader1 As System.Windows.Forms.ColumnHeader
     Friend WithEvents ColumnHeader2 As System.Windows.Forms.ColumnHeader
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
     Friend WithEvents ColumnHeader3 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents ColumnHeader4 As System.Windows.Forms.ColumnHeader
+    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+    Friend WithEvents ToolStripStatusLabel1 As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents ToolStripStatusLabel2 As System.Windows.Forms.ToolStripStatusLabel
 End Class

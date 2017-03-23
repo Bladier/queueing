@@ -93,8 +93,8 @@
         database.SaveEntry(ds)
     End Sub
 
-    Friend Sub UPDATE_LOG(ByVal table As String)
-        mysql = "SELECT * FROM " & filldata & " WHERE TABLEID = " & _TABLEID & " AND STATUS = '" & table & "'"
+    Friend Sub UPDATE_LOG(ByVal st As String)
+        mysql = "SELECT * FROM " & filldata & " WHERE TABLEID = " & _TABLEID & " AND STATUS = '" & st & "'"
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         With ds.Tables(0).Rows(0)
@@ -165,4 +165,18 @@
         End If
         Return ds.Tables(0).Rows(0).Item("TABLEID")
     End Function
+
+    Friend Sub CANCEL(ByVal IDX As Integer)
+        mysql = "SELECT * FROM " & filldata & " WHERE LOGID = " & IDX & ""
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+
+        With ds.Tables(0).Rows(0)
+            .Item("TIME_SERVED") = Now
+            .Item("STATUS") = "CANCEL"
+        End With
+        database.SaveEntry(ds, False)
+    End Sub
+
 End Class
