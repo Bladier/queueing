@@ -26,9 +26,6 @@ Module mod_system
         Return sOutput
     End Function
 
-   
-
-   
 
     ''' <summary>
     ''' Function use to input only numbers
@@ -155,6 +152,19 @@ Module mod_system
         ' Return new string.
         Return New String(array)
     End Function
+
+    Friend Sub Display_extend_monitor(ByVal frm As Form)
+        For Each scrn As Screen In Screen.AllScreens
+            If scrn.DeviceName <> Screen.PrimaryScreen.DeviceName Then 'If its not the Primary Screen
+                Dim Frm2 As New frmService
+                Frm2.StartPosition = FormStartPosition.Manual
+                'This will center Form2 in the 2nd, 3rd, 4th.... screens
+                Dim centerPos As New Point(CInt(scrn.Bounds.Width / 2 - frm.Width / 2) + scrn.Bounds.X, CInt(scrn.Bounds.Height / 2 - frm.Height / 2))
+                Frm2.Location = centerPos
+                Frm2.Show()
+            End If
+        Next
+    End Sub
 
 #Region "Log Module"
     Const LOG_FILE As String = "syslog.txt"

@@ -40,5 +40,6 @@
 
     Private Sub frmService_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         lOAD_QUEUES()
+
     End Sub
 End Class

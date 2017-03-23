@@ -7,13 +7,14 @@
     Dim val As String
 
     Private Sub frmUSER_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        frmService.Show()
         LoadTable()
-
         load_pending()
+
+        Display_extend_monitor(frmService)
+        Me.Focus()
     End Sub
 
-
+   
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
 
         If cboTable.Text = "" Then Exit Sub
@@ -26,7 +27,6 @@
         If Not LOG.check_TABLE_IF_PENDING(cboTable.Text) Then
             Exit Sub
         End If
-
 
         tbl.load_tables(cboTable.Text)
 
@@ -44,6 +44,10 @@
 
         frmService.lOAD_QUEUES()
         load_pending()
+
+
+        Display_extend_monitor(frmService)
+        Me.Focus()
     End Sub
 
 
@@ -101,12 +105,15 @@
                         On Error Resume Next
                     Else
                         With LOG
-                            .TABLEID = ds.Tables(0).Rows(0).Item("TABLEID")
+                            .TABLEID = dr.Item("TABLEID")
                             .STATUS = "SERVED"
                             .UPDATE_LOG("SERVING")
+
+                            Display_extend_monitor(frmService)
+                            Me.Focus()
+                            frmService.lblTableServe.Text = "TABLE #"
                         End With : Exit Sub
                     End If
-
                 End With
             Next
         End If
@@ -133,6 +140,9 @@
 
         frmService.lOAD_QUEUES()
         load_pending()
+
+        Display_extend_monitor(frmService)
+        Me.Focus()
     End Sub
 
 
@@ -166,5 +176,8 @@
 
         lv_Tables.SelectedItems(0).Remove()
         frmService.lOAD_QUEUES()
+
+        Display_extend_monitor(frmService)
+        Me.Focus()
     End Sub
 End Class
