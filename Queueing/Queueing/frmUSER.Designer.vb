@@ -31,8 +31,8 @@ Partial Class frmUSER
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.ColumnHeader3 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.ColumnHeader4 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
@@ -98,6 +98,7 @@ Partial Class frmUSER
         Me.lv_Tables.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2, Me.ColumnHeader3, Me.ColumnHeader4})
         Me.lv_Tables.Font = New System.Drawing.Font("Tahoma", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lv_Tables.FullRowSelect = True
+        Me.lv_Tables.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.lv_Tables.Location = New System.Drawing.Point(396, 71)
         Me.lv_Tables.Name = "lv_Tables"
         Me.lv_Tables.Size = New System.Drawing.Size(374, 312)
@@ -120,6 +121,11 @@ Partial Class frmUSER
         Me.ColumnHeader3.Text = "STATUS"
         Me.ColumnHeader3.Width = 132
         '
+        'ColumnHeader4
+        '
+        Me.ColumnHeader4.Text = "LOG_ID"
+        Me.ColumnHeader4.Width = 0
+        '
         'GroupBox2
         '
         Me.GroupBox2.Controls.Add(Me.btnNext)
@@ -129,11 +135,6 @@ Partial Class frmUSER
         Me.GroupBox2.Size = New System.Drawing.Size(374, 211)
         Me.GroupBox2.TabIndex = 10
         Me.GroupBox2.TabStop = False
-        '
-        'ColumnHeader4
-        '
-        Me.ColumnHeader4.Text = "LOG_ID"
-        Me.ColumnHeader4.Width = 0
         '
         'StatusStrip1
         '
@@ -157,7 +158,7 @@ Partial Class frmUSER
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 45)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(0, 25)
         '
         'frmUSER
         '

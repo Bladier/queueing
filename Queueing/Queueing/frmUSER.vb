@@ -6,6 +6,9 @@
     Dim mysql As String = String.Empty
     Dim val As String
 
+    Dim trans_log As New transaction_log
+    Dim stat As String
+
     Private Sub frmUSER_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadTable()
         load_pending()
@@ -36,15 +39,23 @@
 
             If Not LOG.check_queues Then
                 .STATUS = "PENDING"
+                stat = "PENDING"
             Else
                 .STATUS = "SERVING"
+                stat = "SERVING"
             End If
             .SAVE_LOG()
         End With
 
+        With trans_log
+            .TABLE_ID_T = tbl.ID
+            .REMARKS = stat
+            .log_ID = ""
+            .SAVE_TRANSACTION_lOG()
+        End With
+
         frmService.lOAD_QUEUES()
         load_pending()
-
 
         Display_extend_monitor(frmService)
         Me.Focus()
@@ -107,12 +118,23 @@
                         With LOG
                             .TABLEID = dr.Item("TABLEID")
                             .STATUS = "SERVED"
+                            .LOGID = dr.Item("LogID")
                             .UPDATE_LOG("SERVING")
+                        End With
 
-                            Display_extend_monitor(frmService)
-                            Me.Focus()
-                            frmService.lblTableServe.Text = "TABLE #"
-                        End With : Exit Sub
+                        stat = "SERVED"
+
+                        With trans_log
+                            .TABLE_ID_T = dr.Item("TABLEID")
+                            .REMARKS = stat
+                            .SAVE_TRANSACTION_lOG()
+                        End With
+
+                        Display_extend_monitor(frmService)
+                        Me.Focus()
+                        frmService.lblTableServe.Text = "TABLE #"
+
+                        Exit Sub
                     End If
                 End With
             Next
@@ -129,10 +151,29 @@
                     .UPDATE_LOG("PENDING")
                 End With
 
+                stat = "SERVING"
+
+                With trans_log
+                    .TABLE_ID_T = itm.SubItems(0).Text
+                    .REMARKS = stat
+                    .log_ID = itm.SubItems(3).Text
+                    .SAVE_TRANSACTION_lOG()
+                End With
+
+                '"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""next line"""""""""""
+                stat = "SERVED"
                 With LOG
                     .TABLEID = .Get_last_SErving
                     .STATUS = "SERVED"
                     .UPDATE_LOG("SERVING")
+                End With
+
+
+                With trans_log
+                    .TABLE_ID_T = LOG.Get_last_SErving
+                    .REMARKS = stat
+                    .log_ID = itm.SubItems(3).Text
+                    .SAVE_TRANSACTION_lOG()
                 End With
                 Exit For
             End If

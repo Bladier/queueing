@@ -25,13 +25,13 @@ Partial Class frmService
         Me.components = New System.ComponentModel.Container()
         Me.lvListnextToserve = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
+        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.lblTime = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblTableServe = New System.Windows.Forms.Label()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
-        Me.ColumnHeader2 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.Panel1.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -45,6 +45,7 @@ Partial Class frmService
         Me.lvListnextToserve.Font = New System.Drawing.Font("Microsoft Sans Serif", 21.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lvListnextToserve.ForeColor = System.Drawing.Color.White
         Me.lvListnextToserve.FullRowSelect = True
+        Me.lvListnextToserve.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
         Me.lvListnextToserve.Location = New System.Drawing.Point(732, 0)
         Me.lvListnextToserve.Margin = New System.Windows.Forms.Padding(5)
         Me.lvListnextToserve.Name = "lvListnextToserve"
@@ -57,6 +58,12 @@ Partial Class frmService
         '
         Me.ColumnHeader1.Text = "0"
         Me.ColumnHeader1.Width = 0
+        '
+        'ColumnHeader2
+        '
+        Me.ColumnHeader2.Text = "NEXT TO SERVE"
+        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.ColumnHeader2.Width = 529
         '
         'Panel1
         '
@@ -111,12 +118,6 @@ Partial Class frmService
         '
         'Timer1
         '
-        '
-        'ColumnHeader2
-        '
-        Me.ColumnHeader2.Text = "NEXT TO SERVE"
-        Me.ColumnHeader2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
-        Me.ColumnHeader2.Width = 529
         '
         'frmService
         '

@@ -72,6 +72,9 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Transaction_log.vb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="Class\Logs.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
