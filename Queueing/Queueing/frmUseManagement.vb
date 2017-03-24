@@ -82,7 +82,7 @@
         If btnSave.Text = "&Save" Then
             Save_userAccount()
         Else
-            Modify_userAccount()
+            ' Modify_userAccount()
         End If
     End Sub
 
@@ -109,7 +109,7 @@
             If cboStatus.Text = "Active" Then
                 .status = 1
             End If
-            .s()
+
         End With
 
         MsgBox("Successfully registered", MsgBoxStyle.Information, "Account Registration")

@@ -106,6 +106,14 @@
     <Compile Include="frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmUseManagement.Designer.vb">
+      <DependentUpon>frmUseManagement.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
+    <Compile Include="frmUseManagement.vb">
+      <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="frmUSER.Designer.vb">
       <DependentUpon>frmUSER.vb</DependentUpon>
     </Compile>
@@ -149,6 +157,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUseManagement.resx">
+      <DependentUpon>frmUseManagement.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="frmUSER.resx">
       <DependentUpon>frmUSER.vb</DependentUpon>
