@@ -15,12 +15,12 @@
         LoadTable()
         load_pending()
 
-        'Dim numberofmonitors As Integer = Screen.AllScreens.Length
-        'If numberofmonitors > 1 Then
-        Display_extend_monitor(frmService)
-        'Else
-        'frmService.Show()
-        'End If
+        Dim numberofmonitors As Integer = Screen.AllScreens.Length
+        If numberofmonitors > 1 Then
+            Display_extend_monitor(frmService)
+        Else
+            frmService.Show()
+        End If
 
         Me.Focus()
     End Sub
