@@ -9,11 +9,19 @@
     Dim trans_log As New transaction_log
     Dim stat As String
 
+    Dim music As String = Application.StartupPath & "\music\Door_bell_sound_effect.wav"
+
     Private Sub frmUSER_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LoadTable()
         load_pending()
 
-        Display_extend_monitor(frmService)
+        Dim numberofmonitors As Integer = Screen.AllScreens.Length
+        If numberofmonitors > 1 Then
+            Display_extend_monitor(frmService)
+        Else
+            frmService.Show()
+        End If
+
         Me.Focus()
     End Sub
 
@@ -57,7 +65,12 @@
         frmService.lOAD_QUEUES()
         load_pending()
 
-        Display_extend_monitor(frmService)
+        Dim numberofmonitors As Integer = Screen.AllScreens.Length
+        If numberofmonitors > 1 Then
+            Display_extend_monitor(frmService)
+        Else
+            frmService.Show()
+        End If
         Me.Focus()
     End Sub
 
@@ -72,13 +85,14 @@
             For Each dr As DataRow In ds.Tables(0).Rows
                 With dr
                     If .Item("STATUS") = "SERVING" Then
+                        Label2.Text = .Item("TABLE_NAME")
                         On Error Resume Next
                     ElseIf .Item("STATUS") = "SERVED" Then
                         On Error Resume Next
                     ElseIf .Item("STATUS") = "CANCEL" Then
                         On Error Resume Next
                     Else
-                        Dim lv As ListViewItem = lv_Tables.Items.Add(.Item("LOGID"))
+                        Dim lv As ListViewItem = lv_Tables.Items.Add(.Item("TABLEID"))
                         lv.SubItems.Add(.Item("TABLE_NAME"))
                         lv.SubItems.Add(.Item("STATUS"))
                         lv.SubItems.Add(.Item("LOGID"))
@@ -89,10 +103,11 @@
     End Sub
 
 
-    Private Sub LoadTable()
+    Friend Sub LoadTable()
         Dim mySql As String = "SELECT * FROM TBL_TABLEQUEUE ORDER BY ID DESC"
         Dim ds As DataSet = LoadSQL(mySql)
 
+        cboTable.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
             cboTable.Items.Add(dr.Item("TABLENAME"))
         Next
@@ -104,6 +119,38 @@
             Exit Sub
         End If
 
+        My.Computer.Audio.Play(music)
+
+        If lv_Tables.SelectedItems.Count > 0 Then
+            With LOG
+                .TABLEID = lv_Tables.FocusedItem.Text
+                .STATUS = "SERVING"
+                .UPDATE_LOG("PENDING")
+            End With
+
+            With trans_log
+                .TABLE_ID_T = LOG.TABLEID
+                .REMARKS = LOG.STATUS
+                .log_ID = lv_Tables.SelectedItems(0).SubItems(3).Text
+                .SAVE_TRANSACTION_lOG()
+            End With
+
+            '"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""next line""""""""""''''''''''''''''''''''''''''''''''''''
+            With LOG
+                .TABLEID = .Get_last_SErving
+                .STATUS = "SERVED"
+                .UPDATE_LOG("SERVING")
+            End With
+
+
+            With trans_log
+                .TABLE_ID_T = LOG.TABLEID
+                .REMARKS = LOG.STATUS
+                .log_ID = LOG.Get_last_served
+                .SAVE_TRANSACTION_lOG()
+            End With : GoTo NEXTLINETODO
+        End If
+        ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         If lv_Tables.Items.Count = 0 Then
             Dim mysql As String = "SELECT * FROM TBL_LOG_SERVE WHERE DATE_ADDED = '" & Now.ToShortDateString & "' " & _
                                     "AND STATUS = 'SERVING'"
@@ -129,11 +176,11 @@
                     Me.Focus()
                     Show_serving("TABLE #")
 
-                    Exit Sub
+                    GoTo NEXTLINETODO
                 End With
             Next
         End If
-
+        '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
         For Each itm As ListViewItem In lv_Tables.Items
             If itm.SubItems(1).Text <> "" Then
                 val = itm.SubItems(1).Text
@@ -170,15 +217,22 @@
             End If
         Next
 
+NEXTLINETODO:
         frmService.lOAD_QUEUES()
         load_pending()
 
-        Display_extend_monitor(frmService)
+        Dim numberofmonitors As Integer = Screen.AllScreens.Length
+        If numberofmonitors > 1 Then
+            Display_extend_monitor(frmService)
+        Else
+            frmService.Show()
+        End If
         Me.Focus()
     End Sub
 
     Private Sub Show_serving(ByVal str As String)
         frmService.lblTableServe.Text = str
+        Label2.Text = str
     End Sub
 
     Private Sub cboTable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboTable.KeyPress
@@ -209,10 +263,30 @@
             .CANCEL(lv_Tables.SelectedItems(0).SubItems(3).Text)
         End With
 
+        With trans_log
+            .TABLE_ID_T = lv_Tables.FocusedItem.Text
+            .REMARKS = "CANCEL"
+            .log_ID = lv_Tables.SelectedItems(0).SubItems(3).Text
+            .SAVE_TRANSACTION_lOG()
+        End With
+
         lv_Tables.SelectedItems(0).Remove()
         frmService.lOAD_QUEUES()
 
-        Display_extend_monitor(frmService)
+        Dim numberofmonitors As Integer = Screen.AllScreens.Length
+        If numberofmonitors > 1 Then
+            Display_extend_monitor(frmService)
+        Else
+            frmService.Show()
+        End If
         Me.Focus()
+    End Sub
+
+    Private Sub ExitToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ExitToolStripMenuItem.Click
+        End
+    End Sub
+
+    Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
+        frmAddTable.ShowDialog()
     End Sub
 End Class

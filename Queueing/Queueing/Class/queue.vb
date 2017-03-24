@@ -2,6 +2,7 @@
     Dim filldata As String = "tbl_tablequeue"
     Dim mysql As String = String.Empty
 
+
 #Region "Property and variables"
     Private _ID As Integer
     Public Property ID() As Integer
@@ -39,5 +40,21 @@
             _TABLENAME = .Item("TABLENAME")
         End With
     End Sub
+
+    Friend Function save_table(ByVal STR As String) As Boolean
+        mysql = "SELECT * FROM " & filldata & " WHERE UPPER(TABLENAME) =UPPER('" & STR & "')"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        If ds.Tables(0).Rows.Count > 0 Then MsgBox("This table already exists.", MsgBoxStyle.Critical, "Error") : Return False
+
+        Dim dsnewrow As DataRow
+        dsnewrow = ds.Tables(0).NewRow
+        With dsnewrow
+            .Item("TABLENAME") = _TABLENAME
+        End With
+        ds.Tables(0).Rows.Add(dsnewrow)
+        database.SaveEntry(ds)
+        Return True
+    End Function
 #End Region
 End Class

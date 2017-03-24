@@ -39,12 +39,14 @@ Partial Class frmUSER
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UserManagementToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LogoutToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ReportToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox2.SuspendLayout()
         Me.StatusStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'cboTable
@@ -52,7 +54,7 @@ Partial Class frmUSER
         Me.cboTable.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cboTable.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.cboTable.FormattingEnabled = True
-        Me.cboTable.Location = New System.Drawing.Point(12, 71)
+        Me.cboTable.Location = New System.Drawing.Point(12, 113)
         Me.cboTable.Name = "cboTable"
         Me.cboTable.Size = New System.Drawing.Size(235, 33)
         Me.cboTable.TabIndex = 0
@@ -61,7 +63,7 @@ Partial Class frmUSER
         '
         Me.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.System
         Me.btnAdd.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.btnAdd.Location = New System.Drawing.Point(253, 71)
+        Me.btnAdd.Location = New System.Drawing.Point(253, 113)
         Me.btnAdd.Name = "btnAdd"
         Me.btnAdd.Size = New System.Drawing.Size(137, 35)
         Me.btnAdd.TabIndex = 1
@@ -73,7 +75,7 @@ Partial Class frmUSER
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.SystemColors.Control
-        Me.Label1.Location = New System.Drawing.Point(12, 45)
+        Me.Label1.Location = New System.Drawing.Point(12, 87)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(133, 23)
         Me.Label1.TabIndex = 4
@@ -107,7 +109,7 @@ Partial Class frmUSER
         Me.lv_Tables.Font = New System.Drawing.Font("Tahoma", 20.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lv_Tables.FullRowSelect = True
         Me.lv_Tables.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable
-        Me.lv_Tables.Location = New System.Drawing.Point(396, 71)
+        Me.lv_Tables.Location = New System.Drawing.Point(396, 113)
         Me.lv_Tables.Name = "lv_Tables"
         Me.lv_Tables.Size = New System.Drawing.Size(374, 312)
         Me.lv_Tables.TabIndex = 7
@@ -138,7 +140,7 @@ Partial Class frmUSER
         '
         Me.GroupBox2.Controls.Add(Me.btnNext)
         Me.GroupBox2.Controls.Add(Me.btnCancel)
-        Me.GroupBox2.Location = New System.Drawing.Point(16, 110)
+        Me.GroupBox2.Location = New System.Drawing.Point(16, 152)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(374, 211)
         Me.GroupBox2.TabIndex = 10
@@ -149,9 +151,9 @@ Partial Class frmUSER
         Me.StatusStrip1.AutoSize = False
         Me.StatusStrip1.BackColor = System.Drawing.Color.Gainsboro
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel1, Me.ToolStripStatusLabel2})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 406)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 435)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(781, 30)
+        Me.StatusStrip1.Size = New System.Drawing.Size(784, 30)
         Me.StatusStrip1.TabIndex = 11
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -171,10 +173,10 @@ Partial Class frmUSER
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ReportToolStripMenuItem, Me.LogoutToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FileToolStripMenuItem, Me.ReportToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
-        Me.MenuStrip1.Size = New System.Drawing.Size(781, 24)
+        Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
         Me.MenuStrip1.TabIndex = 12
         Me.MenuStrip1.Text = "MenuStrip1"
         '
@@ -188,14 +190,8 @@ Partial Class frmUSER
         'UserManagementToolStripMenuItem
         '
         Me.UserManagementToolStripMenuItem.Name = "UserManagementToolStripMenuItem"
-        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.UserManagementToolStripMenuItem.Text = "&User Management"
-        '
-        'ReportToolStripMenuItem
-        '
-        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
-        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
-        Me.ReportToolStripMenuItem.Text = "&Report"
+        Me.UserManagementToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
+        Me.UserManagementToolStripMenuItem.Text = "&Table Management"
         '
         'ExitToolStripMenuItem
         '
@@ -203,18 +199,40 @@ Partial Class frmUSER
         Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.ExitToolStripMenuItem.Text = "&Exit"
         '
-        'LogoutToolStripMenuItem
+        'ReportToolStripMenuItem
         '
-        Me.LogoutToolStripMenuItem.Name = "LogoutToolStripMenuItem"
-        Me.LogoutToolStripMenuItem.Size = New System.Drawing.Size(57, 20)
-        Me.LogoutToolStripMenuItem.Text = "&Logout"
+        Me.ReportToolStripMenuItem.Name = "ReportToolStripMenuItem"
+        Me.ReportToolStripMenuItem.Size = New System.Drawing.Size(54, 20)
+        Me.ReportToolStripMenuItem.Text = "&Report"
+        '
+        'GroupBox1
+        '
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Font = New System.Drawing.Font("Tahoma", 15.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox1.ForeColor = System.Drawing.SystemColors.ButtonHighlight
+        Me.GroupBox1.Location = New System.Drawing.Point(396, 36)
+        Me.GroupBox1.Name = "GroupBox1"
+        Me.GroupBox1.Size = New System.Drawing.Size(374, 71)
+        Me.GroupBox1.TabIndex = 13
+        Me.GroupBox1.TabStop = False
+        Me.GroupBox1.Text = "Now Serving"
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(12, 32)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(94, 25)
+        Me.Label2.TabIndex = 0
+        Me.Label2.Text = "TABLE #"
         '
         'frmUSER
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Maroon
-        Me.ClientSize = New System.Drawing.Size(781, 436)
+        Me.ClientSize = New System.Drawing.Size(784, 465)
+        Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.GroupBox2)
@@ -230,6 +248,8 @@ Partial Class frmUSER
         Me.StatusStrip1.PerformLayout()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -253,5 +273,6 @@ Partial Class frmUSER
     Friend WithEvents UserManagementToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ExitToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReportToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents LogoutToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

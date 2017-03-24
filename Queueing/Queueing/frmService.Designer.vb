@@ -100,7 +100,7 @@ Partial Class frmService
         '
         Me.lblTableServe.AutoSize = True
         Me.lblTableServe.Font = New System.Drawing.Font("Tahoma", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblTableServe.Location = New System.Drawing.Point(213, 240)
+        Me.lblTableServe.Location = New System.Drawing.Point(214, 347)
         Me.lblTableServe.Name = "lblTableServe"
         Me.lblTableServe.Size = New System.Drawing.Size(423, 116)
         Me.lblTableServe.TabIndex = 1
@@ -110,7 +110,7 @@ Partial Class frmService
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Tahoma", 72.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(100, 51)
+        Me.Label1.Location = New System.Drawing.Point(87, 143)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(687, 116)
         Me.Label1.TabIndex = 0
