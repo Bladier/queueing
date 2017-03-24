@@ -78,7 +78,7 @@ Partial Class frmLogin
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gray
-        Me.ClientSize = New System.Drawing.Size(277, 174)
+        Me.ClientSize = New System.Drawing.Size(277, 165)
         Me.Controls.Add(Me.txtPassword)
         Me.Controls.Add(Me.txtUsername)
         Me.Controls.Add(Me.btnExit)

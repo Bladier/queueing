@@ -119,7 +119,28 @@
         load_USERS(ds.Tables(0).Rows(0).Item("ID"))
         Return True
     End Function
+
+
+    Friend Sub uSAVE()
+        mysql = "SELECT * FROM " & filldata
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        Dim dsnewrow As DataRow
+        dsnewrow = ds.Tables(0).NewRow
+
+        With dsnewrow
+            .Item("USERNAME") = _USERNAME
+            .Item("NAME") = _NAME
+            .Item("PASSWRD") = _PASSWRD
+            .Item("LASTLOGIN") = Now
+            .Item("SYSTEMINFO") = Now
+            .Item("STATUS") = 1
+            .Item("USERTYPE") = _USERTYPE
+        End With
+        ds.Tables(0).Rows.Add(dsnewrow)
+        database.SaveEntry(ds)
+    End Sub
 #End Region
 
-    
+
 End Class
