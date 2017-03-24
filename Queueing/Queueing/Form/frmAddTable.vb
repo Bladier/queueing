@@ -32,7 +32,7 @@
         Dim mysql As String = "SELECT * FROM TBL_TABLEQUEUE"
         Dim ds As DataSet = LoadSQL(mysql, "TBL_TABLEQUEUE")
 
-        If ds.Tables(0).Rows.Count = 0 Then Exit Sub
+        If ds.Tables(0).Rows.Count = 0 Then lvlist_table.Items.Clear() : Exit Sub
 
         lvlist_table.Items.Clear()
         For Each dr As DataRow In ds.Tables(0).Rows
