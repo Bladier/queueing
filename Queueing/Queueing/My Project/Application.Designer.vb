@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.Queueing.frmUSER
+            Me.MainForm = Global.Queueing.frmLoading
         End Sub
     End Class
 End Namespace

@@ -1,10 +1,8 @@
 ﻿
 
 Module mod_system
-    Public PASSWORD_AGE_COUNT As Integer = 90
-    Public PASSWORD_EXPIRY_COUNT As Integer = 30
-    Public SYSTEM_USERID As Integer = 0
-    Public tmpPassword As String = ""
+    Public user As New sys_user
+    Public USERID As Integer = user.USERID
 
 
     Public Function CommandPrompt(ByVal app As String, ByVal args As String) As String

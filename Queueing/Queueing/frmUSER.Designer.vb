@@ -152,8 +152,9 @@ Partial Class frmUSER
         Me.ToolStripStatusLabel1.BackColor = System.Drawing.Color.LightGray
         Me.ToolStripStatusLabel1.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(589, 25)
-        Me.ToolStripStatusLabel1.Text = "Shortcut Keys: Enter To Add Serve |F7 To Select Table |F5 To Next |F9 To Cancel"
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(604, 25)
+        Me.ToolStripStatusLabel1.Text = "Shortcut Keys: Enter To Add Serve | F7 To Select Table | F5 To Next | F9 To Cance" & _
+            "l"
         '
         'ToolStripStatusLabel2
         '
