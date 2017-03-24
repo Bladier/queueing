@@ -179,4 +179,12 @@
         database.SaveEntry(ds, False)
     End Sub
 
+    Friend Function Get_last_served() As Integer
+        mysql = "SELECT * FROM " & filldata & " WHERE DATE_ADDED ='" & Now.ToShortDateString & "'" & _
+                "AND STATUS ='SERVED' ORDER BY LOGID DESC ROWS 1"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        If ds.Tables(0).Rows.Count = 0 Then Return 0
+        Return ds.Tables(0).Rows(0).Item("LOGID")
+    End Function
 End Class

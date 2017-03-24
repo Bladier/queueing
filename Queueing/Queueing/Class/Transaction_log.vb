@@ -84,5 +84,16 @@
         ds.Tables(0).Rows.Add(dsnewrow)
         database.SaveEntry(ds)
     End Sub
+
+    Friend Function GetLOG_ID() As Integer
+        Dim i As Integer
+        mysql = "SELECT * FROM TBL_LOG_SERVE ORDER BY LOGID DESC ROWS 1"
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        If ds.Tables(0).Rows.Count = 0 Then Return 0
+
+        i = ds.Tables(0).Rows(0).Item("LOGID")
+        Return i
+    End Function
 #End Region
 End Class

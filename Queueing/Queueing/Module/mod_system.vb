@@ -156,12 +156,12 @@ Module mod_system
     Friend Sub Display_extend_monitor(ByVal frm As Form)
         For Each scrn As Screen In Screen.AllScreens
             If scrn.DeviceName <> Screen.PrimaryScreen.DeviceName Then 'If its not the Primary Screen
-                Dim Frm2 As New frmService
-                Frm2.StartPosition = FormStartPosition.Manual
+                ' Dim Frm2 As New frmService
+                frm.StartPosition = FormStartPosition.Manual
                 'This will center Form2 in the 2nd, 3rd, 4th.... screens
                 Dim centerPos As New Point(CInt(scrn.Bounds.Width / 2 - frm.Width / 2) + scrn.Bounds.X, CInt(scrn.Bounds.Height / 2 - frm.Height / 2))
-                Frm2.Location = centerPos
-                Frm2.Show()
+                frm.Location = centerPos
+                frm.Show()
             End If
         Next
     End Sub

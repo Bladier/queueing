@@ -50,7 +50,7 @@
         With trans_log
             .TABLE_ID_T = tbl.ID
             .REMARKS = stat
-            .log_ID = ""
+            .log_ID = .GetLOG_ID
             .SAVE_TRANSACTION_lOG()
         End With
 
@@ -100,42 +100,36 @@
 
     Private Sub btnNext_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnNext.Click
         If Not LOG.check_PENDING_TABLES Then
-            frmService.lblTableServe.Text = "TABLE #"
+            Show_serving("TABLE #")
             Exit Sub
         End If
 
         If lv_Tables.Items.Count = 0 Then
-            Dim mysql As String = "SELECT * FROM TBL_LOG_SERVE WHERE DATE_ADDED = '" & Now.ToShortDateString & "'"
+            Dim mysql As String = "SELECT * FROM TBL_LOG_SERVE WHERE DATE_ADDED = '" & Now.ToShortDateString & "' " & _
+                                    "AND STATUS = 'SERVING'"
             Dim ds As DataSet = LoadSQL(mysql, filldata)
 
             For Each dr As DataRow In ds.Tables(0).Rows
                 With dr
-                    If .Item("STATUS") = "SERVED" Then
-                        On Error Resume Next
-                    ElseIf .Item("STATUS") = "CANCEL" Then
-                        On Error Resume Next
-                    Else
-                        With LOG
-                            .TABLEID = dr.Item("TABLEID")
-                            .STATUS = "SERVED"
-                            .LOGID = dr.Item("LogID")
-                            .UPDATE_LOG("SERVING")
-                        End With
+                   
+                    With LOG
+                        .TABLEID = dr.Item("TABLEID")
+                        .STATUS = "SERVED"
+                        .UPDATE_LOG("SERVING")
+                    End With
 
-                        stat = "SERVED"
+                    With trans_log
+                        .TABLE_ID_T = dr.Item("TABLEID")
+                        .REMARKS = LOG.STATUS
+                        .log_ID = dr.Item("LogID")
+                        .SAVE_TRANSACTION_lOG()
+                    End With
 
-                        With trans_log
-                            .TABLE_ID_T = dr.Item("TABLEID")
-                            .REMARKS = stat
-                            .SAVE_TRANSACTION_lOG()
-                        End With
+                    Display_extend_monitor(frmService)
+                    Me.Focus()
+                    Show_serving("TABLE #")
 
-                        Display_extend_monitor(frmService)
-                        Me.Focus()
-                        frmService.lblTableServe.Text = "TABLE #"
-
-                        Exit Sub
-                    End If
+                    Exit Sub
                 End With
             Next
         End If
@@ -151,17 +145,14 @@
                     .UPDATE_LOG("PENDING")
                 End With
 
-                stat = "SERVING"
-
                 With trans_log
-                    .TABLE_ID_T = itm.SubItems(0).Text
-                    .REMARKS = stat
+                    .TABLE_ID_T = LOG.TABLEID
+                    .REMARKS = LOG.STATUS
                     .log_ID = itm.SubItems(3).Text
                     .SAVE_TRANSACTION_lOG()
                 End With
 
-                '"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""next line"""""""""""
-                stat = "SERVED"
+                '"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""next line""""""""""
                 With LOG
                     .TABLEID = .Get_last_SErving
                     .STATUS = "SERVED"
@@ -170,9 +161,9 @@
 
 
                 With trans_log
-                    .TABLE_ID_T = LOG.Get_last_SErving
-                    .REMARKS = stat
-                    .log_ID = itm.SubItems(3).Text
+                    .TABLE_ID_T = LOG.TABLEID
+                    .REMARKS = LOG.STATUS
+                    .log_ID = LOG.Get_last_served
                     .SAVE_TRANSACTION_lOG()
                 End With
                 Exit For
@@ -186,6 +177,9 @@
         Me.Focus()
     End Sub
 
+    Private Sub Show_serving(ByVal str As String)
+        frmService.lblTableServe.Text = str
+    End Sub
 
     Private Sub cboTable_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles cboTable.KeyPress
         If isEnter(e) Then btnAdd.PerformClick()
