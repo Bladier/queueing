@@ -88,7 +88,7 @@
 
 #Region "fUNCTIONS AND PROCEDURES"
     Friend Sub load_USERS(ByVal idx As Integer)
-        mysql = String.Format("SELECT * FROM " & filldata & "WHERE ID = {0}", idx)
+        mysql = String.Format("SELECT * FROM " & filldata & " WHERE ID = {0}", idx)
         Dim ds As DataSet = LoadSQL(mysql, filldata)
 
         If ds.Tables(0).Rows.Count = 0 Then MsgBox("Unable to load user.", MsgBoxStyle.Critical, "Error")

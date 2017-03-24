@@ -309,4 +309,5 @@ NEXTLINETODO:
     Private Sub UserManagementToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles UserManagementToolStripMenuItem.Click
         frmAddTable.ShowDialog()
     End Sub
+
 End Class

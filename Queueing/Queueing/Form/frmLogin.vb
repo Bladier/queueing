@@ -20,7 +20,7 @@
         End If
 
         USERID = sUSER.USERID
-        MsgBox("Welcome " & UppercaseFirstLetter(sUSER.USERNAME) & "you login as " _
+        MsgBox("Welcome " & UppercaseFirstLetter(sUSER.USERNAME) & " you login as " _
                & UppercaseFirstLetter(sUSER.USERTYPE), MsgBoxStyle.Information, "Welcome")
 
         frmUSER.Show()
