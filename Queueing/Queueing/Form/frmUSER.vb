@@ -12,6 +12,10 @@
     Dim music As String = Application.StartupPath & "\music\Door_bell_sound_effect.wav"
 
     Private Sub frmUSER_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        If IsProcessRunning("QUEUEING SYSTEM") Then
+            Application.Exit()
+        End If
+
         LoadTable()
         load_pending()
 
@@ -25,7 +29,19 @@
         Me.Focus()
     End Sub
 
-   
+    Public Function IsProcessRunning(ByVal name As String) As Boolean
+        'here we're going to get a list of all running processes on
+        'the computer
+        For Each clsProcess As Process In Process.GetProcesses()
+            If clsProcess.ProcessName.StartsWith(name) Then
+                'process found so it's running so return true
+                Return True
+            End If
+        Next
+        'process not found, return false
+        Return False
+    End Function
+
     Private Sub btnAdd_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAdd.Click
 
         If cboTable.Text = "" Then Exit Sub

@@ -94,46 +94,54 @@
     <Compile Include="Class\queue.vb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmAddTable.Designer.vb">
+    <Compile Include="Form\frmAddTable.Designer.vb">
       <DependentUpon>frmAddTable.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmAddTable.vb">
+    <Compile Include="Form\frmAddTable.vb">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmLoading.Designer.vb">
+    <Compile Include="Form\frmLoading.Designer.vb">
       <DependentUpon>frmLoading.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmLoading.vb">
+    <Compile Include="Form\frmLoading.vb">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmLogin.Designer.vb">
+    <Compile Include="Form\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmLogin.vb">
+    <Compile Include="Form\frmLogin.vb">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmUseManagement.Designer.vb">
+    <Compile Include="Form\frmUseManagement.Designer.vb">
       <DependentUpon>frmUseManagement.vb</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmUseManagement.vb">
+    <Compile Include="Form\frmUseManagement.vb">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmUSER.Designer.vb">
+    <Compile Include="Form\frmUSER.Designer.vb">
       <DependentUpon>frmUSER.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmUSER.vb">
+    <Compile Include="Form\frmUSER.vb">
       <SubType>Form</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Module\autopatch.vb" />
     <Compile Include="Module\database.vb" />
     <Compile Include="Module\mod_system.vb" />
-    <Compile Include="frmService.vb">
+    <Compile Include="Form\frmService.vb">
       <SubType>Form</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="frmService.Designer.vb">
+    <Compile Include="Form\frmService.Designer.vb">
       <DependentUpon>frmService.vb</DependentUpon>
       <SubType>Form</SubType>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -159,23 +167,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmAddTable.resx">
+    <EmbeddedResource Include="Form\frmAddTable.resx">
       <DependentUpon>frmAddTable.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLoading.resx">
+    <EmbeddedResource Include="Form\frmLoading.resx">
       <DependentUpon>frmLoading.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmLogin.resx">
+    <EmbeddedResource Include="Form\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUseManagement.resx">
+    <EmbeddedResource Include="Form\frmUseManagement.resx">
       <DependentUpon>frmUseManagement.vb</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmUSER.resx">
+    <EmbeddedResource Include="Form\frmUSER.resx">
       <DependentUpon>frmUSER.vb</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmService.resx">
+    <EmbeddedResource Include="Form\frmService.resx">
       <DependentUpon>frmService.vb</DependentUpon>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
