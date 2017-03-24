@@ -22,6 +22,7 @@ Partial Class frmUSER
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmUSER))
         Me.cboTable = New System.Windows.Forms.ComboBox()
         Me.btnAdd = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -196,7 +197,7 @@ Partial Class frmUSER
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(177, 22)
         Me.ExitToolStripMenuItem.Text = "&Exit"
         '
         'ReportToolStripMenuItem
@@ -240,6 +241,7 @@ Partial Class frmUSER
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.btnAdd)
         Me.Controls.Add(Me.cboTable)
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmUSER"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen

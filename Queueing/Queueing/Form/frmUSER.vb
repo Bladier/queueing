@@ -12,7 +12,7 @@
     Dim music As String = Application.StartupPath & "\music\Door_bell_sound_effect.wav"
 
     Private Sub frmUSER_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If IsProcessRunning("QUEUEING SYSTEM") Then
+        If IsProcessRunning("Queueing.exe") Then
             Application.Exit()
         End If
 
