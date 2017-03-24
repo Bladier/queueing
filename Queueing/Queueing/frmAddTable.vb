@@ -15,6 +15,7 @@
 
         txtTableName.Text = ""
         frmUSER.LoadTable()
+        load_table()
         MsgBox("Succesfully saved.", MsgBoxStyle.Information, "Save")
     End Sub
 
@@ -24,6 +25,7 @@
 
     Private Sub frmAddTable_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         load_table()
+        DISABLED(False)
     End Sub
 
     Private Sub load_table()
@@ -41,5 +43,53 @@
 
     Private Sub lvlist_table_DoubleClick(ByVal sender As Object, ByVal e As System.EventArgs) Handles lvlist_table.DoubleClick
         txtTableName.Text = lvlist_table.SelectedItems(0).SubItems(1).Text
+        DISABLED(True)
+        btnSave.Enabled = False
+    End Sub
+
+    Private Sub DISABLED(ByVal ST As Boolean)
+        btnEdit.Enabled = ST
+        btnDelete.Enabled = ST
+    End Sub
+
+    Private Sub btnEdit_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEdit.Click
+        If txtTableName.Text = "" Then Exit Sub
+
+        Dim result As DialogResult = MsgBox("Do you want to update this table?", MsgBoxStyle.YesNo, "Update")
+        If result = vbNo Then Exit Sub
+
+        With addTable
+            .ID = lvlist_table.FocusedItem.Text
+            .TABLENAME = txtTableName.Text.ToUpper
+        End With
+
+        If Not addTable.update_table() Then Exit Sub
+
+        txtTableName.Text = ""
+        frmUSER.LoadTable()
+        load_table()
+        MsgBox("Succesfully updated.", MsgBoxStyle.Information, "Update")
+        btnSave.Enabled = True
+        DISABLED(False)
+        txtTableName.Text = ""
+    End Sub
+
+    Private Sub btnDelete_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDelete.Click
+        If lvlist_table.SelectedItems.Count = 0 Then Exit Sub
+
+        addTable.ID = lvlist_table.FocusedItem.Text
+
+        addTable.delete_table()
+
+        MsgBox("Successfully deleted.", MsgBoxStyle.Information, "Delete")
+        btnSave.Enabled = True
+        DISABLED(False)
+        frmUSER.LoadTable()
+        load_table()
+        txtTableName.Text = ""
+    End Sub
+
+    Private Sub txtTableName_KeyPress(ByVal sender As System.Object, ByVal e As System.Windows.Forms.KeyPressEventArgs) Handles txtTableName.KeyPress
+        If isEnter(e) Then btnSave.PerformClick()
     End Sub
 End Class

@@ -31,6 +31,7 @@ Partial Class frmAddTable
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnEdit = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
         Me.txtTableName = New Queueing.watermark()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -41,7 +42,7 @@ Partial Class frmAddTable
         Me.btnSave.Location = New System.Drawing.Point(6, 19)
         Me.btnSave.Name = "btnSave"
         Me.btnSave.Size = New System.Drawing.Size(75, 40)
-        Me.btnSave.TabIndex = 1
+        Me.btnSave.TabIndex = 0
         Me.btnSave.Text = "&Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
@@ -60,7 +61,7 @@ Partial Class frmAddTable
         Me.btnClose.Location = New System.Drawing.Point(87, 65)
         Me.btnClose.Name = "btnClose"
         Me.btnClose.Size = New System.Drawing.Size(70, 40)
-        Me.btnClose.TabIndex = 2
+        Me.btnClose.TabIndex = 3
         Me.btnClose.Text = "&Close"
         Me.btnClose.UseVisualStyleBackColor = True
         '
@@ -68,7 +69,7 @@ Partial Class frmAddTable
         '
         Me.lvlist_table.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1, Me.ColumnHeader2})
         Me.lvlist_table.FullRowSelect = True
-        Me.lvlist_table.Location = New System.Drawing.Point(26, 64)
+        Me.lvlist_table.Location = New System.Drawing.Point(26, 74)
         Me.lvlist_table.Name = "lvlist_table"
         Me.lvlist_table.Size = New System.Drawing.Size(240, 241)
         Me.lvlist_table.TabIndex = 3
@@ -94,7 +95,7 @@ Partial Class frmAddTable
         Me.GroupBox1.Location = New System.Drawing.Point(272, 117)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(170, 120)
-        Me.GroupBox1.TabIndex = 4
+        Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Function"
         '
@@ -104,7 +105,7 @@ Partial Class frmAddTable
         Me.btnDelete.Location = New System.Drawing.Point(6, 65)
         Me.btnDelete.Name = "btnDelete"
         Me.btnDelete.Size = New System.Drawing.Size(75, 40)
-        Me.btnDelete.TabIndex = 4
+        Me.btnDelete.TabIndex = 2
         Me.btnDelete.Text = "&Delete"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
@@ -114,9 +115,19 @@ Partial Class frmAddTable
         Me.btnEdit.Location = New System.Drawing.Point(87, 19)
         Me.btnEdit.Name = "btnEdit"
         Me.btnEdit.Size = New System.Drawing.Size(70, 40)
-        Me.btnEdit.TabIndex = 3
-        Me.btnEdit.Text = "&Edit"
+        Me.btnEdit.TabIndex = 1
+        Me.btnEdit.Text = "&Update"
         Me.btnEdit.UseVisualStyleBackColor = True
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label2.Location = New System.Drawing.Point(75, 61)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(153, 13)
+        Me.Label2.TabIndex = 5
+        Me.Label2.Text = "Double Click to Update/Delete"
         '
         'txtTableName
         '
@@ -133,13 +144,14 @@ Partial Class frmAddTable
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Gainsboro
         Me.ClientSize = New System.Drawing.Size(464, 337)
+        Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.lvlist_table)
         Me.Controls.Add(Me.txtTableName)
         Me.Controls.Add(Me.Label1)
         Me.Name = "frmAddTable"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Add Table"
+        Me.Text = "Table Management"
         Me.GroupBox1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -155,4 +167,5 @@ Partial Class frmAddTable
     Friend WithEvents GroupBox1 As System.Windows.Forms.GroupBox
     Friend WithEvents btnDelete As System.Windows.Forms.Button
     Friend WithEvents btnEdit As System.Windows.Forms.Button
+    Friend WithEvents Label2 As System.Windows.Forms.Label
 End Class

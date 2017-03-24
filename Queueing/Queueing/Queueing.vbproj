@@ -126,6 +126,7 @@
     <Compile Include="frmUSER.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Module\autopatch.vb" />
     <Compile Include="Module\database.vb" />
     <Compile Include="Module\mod_system.vb" />
     <Compile Include="frmService.vb">

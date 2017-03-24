@@ -56,5 +56,23 @@
         database.SaveEntry(ds)
         Return True
     End Function
+
+    Friend Function update_table() As Boolean
+        mysql = "SELECT * FROM " & filldata & " WHERE ID =" & _ID
+        Dim ds As DataSet = LoadSQL(mysql, filldata)
+
+        If ds.Tables(0).Rows.Count < 0 Then Return False
+
+        With ds.Tables(0).Rows(0)
+            .Item("TABLENAME") = _TABLENAME
+        End With
+        database.SaveEntry(ds, False)
+        Return True
+    End Function
+
+    Friend Sub delete_table()
+        mysql = "DELETE FROM " & filldata & " WHERE ID =" & _ID
+        RunCommand(mysql)
+    End Sub
 #End Region
 End Class

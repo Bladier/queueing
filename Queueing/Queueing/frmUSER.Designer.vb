@@ -242,6 +242,7 @@ Partial Class frmUSER
         Me.Controls.Add(Me.cboTable)
         Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "frmUSER"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "QUEUEING SYSTEM"
         Me.GroupBox2.ResumeLayout(False)
         Me.StatusStrip1.ResumeLayout(False)
