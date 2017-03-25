@@ -24,9 +24,11 @@
                & UppercaseFirstLetter(sUSER.USERTYPE), MsgBoxStyle.Information, "Welcome")
 
         frmUSER.Show()
+        Me.Close()
     End Sub
 
     Private Sub CLear()
+
         txtPassword.Text = ""
         txtUsername.Text = ""
     End Sub
